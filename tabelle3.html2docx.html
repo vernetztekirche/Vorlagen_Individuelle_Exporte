@@ -1,0 +1,69 @@
+{template:base}
+<html>
+	<head>
+		<title>Tabelle 3</title>
+<style type="text/css">
+* {
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:10pt;
+}
+.title {
+	font-size:16pt;
+}
+table {
+	border-spacing:0px;
+}
+#footer {
+	font-size:9pt;
+}
+td {
+	padding:5px;
+	vertical-align:top;
+}
+.headline {
+	background-color:whitesmoke;
+	font-size:12pt;
+	font-weight:bold;
+}
+.liturg {
+	color:#333;
+	font-size:11pt;
+}
+table {
+	width:610;
+}
+.grey {
+	background-color:whitesmoke;
+}
+</style>
+</head>
+<body>
+    <div id="header">{me}</div>
+    <div id="footer">Stand: {now} Uhr; Exportzeitraum:
+    {start} bis {end}</div>
+    
+    <div id="content">
+        <h2 class="title">Termine vom {start} bis {end}</h2>
+<table>
+	{loop:start}
+    {iseven}
+    <tr class="grey">
+         {call-template:vera}{call-template:end}
+    </tr>
+    {iseven:end}
+    {isodd}
+    <tr>
+         {call-template:vera}{call-template:end}
+    </tr>
+    {isodd:end}
+    {loop:end}
+</table>
+	</div>
+  </body>
+</html>
+{template:end}
+
+{template:vera}
+<td width="180">{elem:DATUM2}</td>
+<td width="430"><strong>{elem:_event_TITLE}</strong>{if:SUBTITLE} : {elem:SUBTITLE}{if:end}{if:_event_SHORT_DESCRIPTION}<br />{elem:_event_SHORT_DESCRIPTION}{if:end}{if:_person_NAME}<br />{elem:_person_NAME}{if:end}<br /><span class="eight">{elem:_place_NAME}</span></td>
+{template:end}

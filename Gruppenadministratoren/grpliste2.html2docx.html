@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>Liste 2 GA</title>
+<style type="text/css">
+* {
+	font-family:Arial,Helvetica,sans-serif;
+	
+}
+
+.grey {
+	background-color:whitesmoke;
+	margin:7px 0;
+	width:100%;
+	border:4px solid whitesmoke;
+	font-size:12pt;
+}
+#footer {
+	font-size:10pt;
+}
+.vera {
+	margin:4px 0;
+	text-indent:-70px;
+	margin-left:70px;
+	font-size:10pt;
+}
+.liturg {
+	font-size:13pt;
+	color:#666666;
+}
+.user {
+	font-size:9pt;
+	color:#666;
+}
+</style>
+	</head>
+	<body>
+		<div id="header">{me}</div>
+		<div id="footer">Stand: {now} Uhr; Exportzeitraum:
+        {start} bis {end}</div>
+		<div id="content">
+			<h2 style="font-size:16pt;">Termine vom {start} bis {end}</h2>
+			
+            {loop:start} 
+            	{ifnotprev:START_DATUM}<p class="grey"><strong>{elem:WOCHENTAG_START_LANG}, {elem:START_DATUM}</strong>{if:LITURG_BEZ}<span class="liturg">{space}{elem:LITURG_BEZ}</span>{if:end}</p>{ifnotprev:end}
+				<p class="vera">{ifisnot:START_UHRZEIT,00.00}{elem:START_UHRZEIT} Uhr : {ifisnot:end}{elem:_event_TITLE}{if:SUBTITLE} : {elem:SUBTITLE}{if:end}
+                <br /><span style="font-size:10pt">{if:_event_SHORT_DESCRIPTION}{elem:_event_SHORT_DESCRIPTION}<br />{if:end}{elem:_place_CITY} : {elem:_place_NAME}
+                {if:_person_NAME}<br />mit: {elem:_person_NAME}{if:end}</span>
+                <br /><span class="user">{elem:_user_REALNAME}</span>
+                </p>
+            {loop:end}
+			  
+		</div>
+	</body>
+</html>

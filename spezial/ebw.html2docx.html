@@ -1,0 +1,443 @@
+{template:base}
+<html>
+	<head>
+		<title>Export Erwachsenenbildung</title>
+	</head>
+	<body>
+    
+<div id="header">
+<style type="text/css">
+* {
+	font-family:Agfa Rotis Sans Serif,Arial, Helvetica, sans-serif;
+}
+.eight {
+	font-size:8pt;
+}
+.ten {
+	font-size:10pt;
+}
+.twelf {
+	font-size:12pt;
+}
+.sixteen {
+	font-size:16pt;
+}
+.center {
+	text-align:center;
+}
+.bordered td {
+	border:1px solid black;
+	
+}
+table {
+	border-spacing:0px;
+	border-collapse:collapse;
+	width:950px;
+}
+
+</style>
+
+<table>
+		
+        <tr>
+			<td style="width:40%"><span class="ten"><b>Veranstaltungen der Erwachsenenbildung</b></span><br />
+			<span class="sixteen">Statistikmeldungen</span>
+			<br />
+			<span class="ten">für den institutionellen Zuschuss</span>
+			</td>
+			<td style="width:40%"><span class="twelf"><b>Abgabetermin:</b></span><br />
+			<span class="sixteen"><b>Zeitraum: {start} - {end}</b></span></td>
+			<td style="width:20%"></td>
+		</tr>
+		<tr>
+			<td width="40%"><span class="twelf">Veranstalter (Gemeinde/Einrichtung):</span></td>
+			<td width="40%"><span class="twelf"><b>{me}</b></span></td>
+			<td ></td>
+		</tr>
+</table>
+
+</div>
+<div id="footer"><span style="color:#222222;font-size:8px;">Export evangelische-termine.de vom {now} Uhr</span></div>
+<div id="content">
+
+
+<p style="margin-bottom:15px" class="ten">An das
+
+{call-template:adresse}
+	{with-param:dekanat,(Veranstaltung/_event_SUBREGION_ID)[1]/@db}
+{call-template:end}
+
+</p>
+
+<table class="bordered">
+	<tr>
+		<td width="18%" ><span class="ten">Datum u. Uhrzeit</span></td>
+		<td width="10%" ><span class="ten">Anzahl der Teilnehmer</span></td>
+		<td width="20%" ><span class="ten">Art</span></td>
+		<td width="40%" ><span class="ten">Thema/Titel der Veranstaltung</span></td>
+		<td width="12%" ><span class="ten">wird vom EBW ausgefüllt</span></td>
+	</tr>
+    {loop:start}
+    <tr>
+        <td class="ten">{elem:DATUM2}</td>
+        <td class="ten center">{elem:_event_TEXTLINE_2}</td>
+        <td class="ten">{elem:_event_MENUE_1}</td>
+        <td class="ten">{elem:_event_TITLE}{if:SUBTITLE} : {elem:SUBTITLE}{if:end}<br />{elem:_event_SHORT_DESCRIPTION}<br /><span class="eight">[{elem:_event_ID}]</span></td>
+        <td>{space}</td>
+    </tr>
+    {loop:end}
+</table>
+
+<p style="margin-top:8px">{space}</p>
+<table>
+	<tr>
+		<td width="20%" ><span class="ten">Datum:</span></td>
+		<td width="50%" ><span class="ten">Veranstaltungsleiter/in (Name, Tel.):</span></td>
+		<td width="30%" ><span class="ten">Unterschrift:</span></td>
+        <tr><td colspan="3"></td></tr>
+	</tr>
+</table>
+
+</div>
+
+</body>
+</html>
+{template:end}
+
+
+{template:adresse}
+{param:dekanat}
+	
+
+{ifis:$dekanat,407}
+<br />Evangelisches Bildungswerk Weilheim e. V.
+<br />Am Öferl 8
+<br />82362 Weilheim
+{ifis:end}
+{ifis:$dekanat,404}
+<br />Evangelische Bildungswerk e.V.
+<br />Herzog-Wilhelm-Straße 24/III
+<br />80331 München
+{ifis:end}
+{ifis:$dekanat,203}
+<br />Evangelisches Bildungswerk Südschwaben e. V.
+<br />St. Mang-Platz 2
+<br />87435 Kempten
+{ifis:end}
+{ifis:$dekanat,101}
+<br />Evangelisches Bildungswerk Ansbach e. V.
+<br />Schaitberger Straße 18
+<br />91522 Ansbach
+{ifis:end}
+{ifis:$dekanat,102}
+<br />Evangelisches Bildungswerk Untermain-Aschaffenburg-Lohr a. M. e. V.
+<br />Alexandrastraße 5
+<br />63739 Aschaffenburg
+{ifis:end}
+{ifis:$dekanat,103}
+<br />Evangelisches Bildungswerk des Dekanatsbezirks Bad Neustadt an der Saale e. V.
+<br />Goethestr. 13
+<br />97616 Bad Neustadt/Saale
+{ifis:end}
+{ifis:$dekanat,104}
+<br />Evangelisches Bildungswerk Bad Windsheim-Neustadt/Aisch-Uffenheim e. V.
+<br />Gartenweg 6
+<br />91448 Emskirchen
+{ifis:end}
+{ifis:$dekanat,105}
+<br />Evangelisches Bildungswerk der Dekanate Kitzingen, Castell, Markt Einersheim e. V.
+<br />Gustav-Adolf-Platz 6
+<br />97318 Kitzingen
+{ifis:end}
+{ifis:$dekanat,106}
+<br />Evangelisches Bildungswerk Dinkelsbühl e. V.
+<br />Dr. Martin-Luther-Straße 4
+<br />91550 Dinkelsbühl
+{ifis:end}
+{ifis:$dekanat,107}
+<br />Evangelisches Bildungswerk Feuchtwangen e. V.
+<br />Fischerweg 81
+<br />91555 Feuchtwangen
+{ifis:end}
+{ifis:$dekanat,108}
+<br />Evangelisches Bildungswerk Jura-Altmühltal-Hahnenkamm e. V.
+<br />Martin-Luther-Platz 9
+<br />91781 Weißenburg
+{ifis:end}
+{ifis:$dekanat,109}
+<br />Evangelisches Bildungswerk Jura-Altmühltal-Hahnenkamm e. V.
+<br />Martin-Luther-Platz 9
+<br />91781 Weißenburg
+{ifis:end}
+{ifis:$dekanat,110}
+<br />Evangelisches Bildungswerk der Dekanate Kitzingen, Castell, Markt Einersheim e. V.
+<br />Gustav-Adolf-Platz 6
+<br />97318 Kitzingen
+{ifis:end}
+{ifis:$dekanat,111}
+<br />Evangelisches Bildungswerk Leutershausen e. V.
+<br />Badgasse 2
+<br />91578 Leutershausen
+{ifis:end}
+{ifis:$dekanat,112}
+<br />Evangelisches Bildungswerk Untermain-Aschaffenburg-Lohr a. M. e. V.
+<br />Alexandrastraße 5
+<br />63739 Aschaffenburg
+{ifis:end}
+{ifis:$dekanat,113}
+<br />Evangelisches Bildungswerk der Dekanate Kitzingen, Castell, Markt Einersheim e. V.
+<br />Gustav-Adolf-Platz 6
+<br />97318 Kitzingen
+{ifis:end}
+{ifis:$dekanat,114}
+<br />Evangelisches Bildungswerk Rothenburg o.d.T. e.V.
+<br />Klostergasse 15
+<br />91541 Rothenburg o. d. T.
+{ifis:end}
+{ifis:$dekanat,115}
+<br />Evangelisches Bildungswerk Schweinfurt e. V.
+<br />Graben 10
+<br />97421 Schweinfurt
+{ifis:end}
+{ifis:$dekanat,116}
+<br />Evangelisches Bildungswerk Bad Windsheim-Neustadt/Aisch-Uffenheim e. V.
+<br />Gartenweg 6
+<br />91448 Emskirchen
+{ifis:end}
+{ifis:$dekanat,116}
+<br />Evangelisches Bildungswerk Bad Windsheim-Neustadt/Aisch-Uffenheim e. V.
+<br />Gartenweg 6
+<br />91448 Emskirchen
+{ifis:end}
+{ifis:$dekanat,117}
+<br />Evangelisches Bildungswerk Wassertrüdingen e. V.
+<br />Kirchgasse 4
+<br />91717 Wassertrüdingen
+{ifis:end}
+{ifis:$dekanat,118}
+<br />Evangelisches Bildungswerk im Dekanatsbezirk Windsbach e. V.
+<br />Heinrich-Brandt-Straße 6
+<br />91575 Windsbach
+{ifis:end}
+{ifis:$dekanat,119}
+<br />Evangelisches Bildungswerk Würzburg e. V.
+<br />Wilhelm-Schwinn-Platz 3
+<br />97070 Würzburg
+{ifis:end}
+{ifis:$dekanat,201}
+<br />Evangelisches Bildungswerk Augsburg e. V.
+<br />Im Annahof 4
+<br />86150 Augsburg
+{ifis:end}
+{ifis:$dekanat,202}
+<br />Evangelisches Bildungswerk Donau-Ries e.V.
+<br />Würzburger Str. 13
+<br />86720 Nördlingen
+{ifis:end}
+{ifis:$dekanat,202}
+<br />Evangelisches Bildungswerk Südschwaben e. V.
+<br />St. Mang-Platz 2
+<br />87435 Kempten
+{ifis:end}
+{ifis:$dekanat,204}
+<br />Evangelisches Bildungswerk Memmingen e. V.
+<br />Martin-Luther-Platz 5
+<br />87700 Memmingen
+{ifis:end}
+{ifis:$dekanat,205}
+<br />Evangelisches Bildungswerk in den Landkreisen Dillingen, Günzburg, Neu-Ulm e. V.
+<br />Petrusplatz 8
+<br />89231 Neu-Ulm
+{ifis:end}
+{ifis:$dekanat,206}
+<br />Evangelisches Bildungswerk Donau-Ries e.V.
+<br />Würzburger Str. 13
+<br />86720 Nördlingen
+{ifis:end}
+{ifis:$dekanat,207}
+<br />Evangelisches Bildungswerk Donau-Ries e.V.
+<br />Würzburger Str. 13
+<br />86720 Nördlingen
+{ifis:end}
+{ifis:$dekanat,302}
+<br />Evangelisches Bildungswerk Bamberg e. V.
+<br />Markusplatz 1
+<br />96047Bamberg
+{ifis:end}
+{ifis:$dekanat,303}
+<br />Evangelisches Bildungswerk Bayreuth/Bad Berneck/Pegnitz e. V.
+<br />Richard-Wagner-Straße 24
+<br />95444 Bayreuth
+{ifis:end}
+{ifis:$dekanat,304}
+<br />Evangelisches Bildungswerk Coburg e. V.
+<br />Hintere Kreuzgasse 7c
+<br />96450 Coburg
+{ifis:end}
+{ifis:$dekanat,305}
+<br />Evangelische Erwachsenenbildung in den Dekanaten Forchheim (Muggendorf)-Gräfenberg
+<br />Kirchplatz 3
+<br />91322 Gräfenberg
+{ifis:end}
+{ifis:$dekanat,306}
+<br />Evangelische Erwachsenenbildung Hof – Naila e. V.
+<br />Marienstr. 5
+<br />95028 Hof
+{ifis:end}
+{ifis:$dekanat,307}
+<br />Evangelisches Bildungswerk der Dekanatsbezirke Kronach-Ludwigsstadt-Michelau e. V.
+<br />Kirchplatz 5
+<br />96247 Michelau
+{ifis:end}
+{ifis:$dekanat,308}
+<br />Evangelisches Bildungswerk e.V. Kulmbach-Thurnau
+<br />Huthergasse 8
+<br />95326 Kulmbach
+{ifis:end}
+{ifis:$dekanat,310}
+<br />Evangelisches Bildungswerk der Dekanatsbezirke Kronach-Ludwigsstadt-Michelau e. V.
+<br />Kirchplatz 5
+<br />96247 Michelau
+{ifis:end}
+{ifis:$dekanat,311}
+<br />Evangelisches Bildungswerk im Dekanatsbezirk Münchberg e. V.
+<br />Richard-Wagner-Straße 26
+<br />95213 Münchberg
+{ifis:end}
+{ifis:$dekanat,312}
+<br />Evangelische Erwachsenenbildung Hof – Naila e. V.
+<br />Marienstr. 5
+<br />95028 Hof
+{ifis:end}
+{ifis:$dekanat,313}
+<br />Evangelisches Bildungswerk Bayreuth/Bad Berneck/Pegnitz e. V.
+<br />Richard-Wagner-Straße 24
+<br />95444 Bayreuth
+{ifis:end}
+{ifis:$dekanat,314}
+<br />Lebensgemeinschaft für die Einheitder Christen e. V.
+<br />Schloss Craheim – OT Wetzhausen
+<br />97488 Stadtlauringen
+{ifis:end}
+{ifis:$dekanat,315}
+<br />Evangelisches Bildungswerk Selb-Wunsiedel e.V.
+<br />Von-der-Tann-Straße 4
+<br />95100 Selb
+{ifis:end}
+{ifis:$dekanat,316}
+<br />Evangelisches Bildungswerk e.V. Kulmbach-Thurnau
+<br />Huthergasse 8
+<br />95326 Kulmbach
+{ifis:end}
+{ifis:$dekanat,317}
+<br />Evangelisches Bildungswerk Selb-Wunsiedel e.V.
+<br />Von-der-Tann-Straße 4
+<br />95100 Selb
+{ifis:end}
+{ifis:$dekanat,401}
+<br />Evangelisches Bildungswerk Bad Tölz e.V.
+<br />Schützenweg 10
+<br />83646 Bad Tölz
+{ifis:end}
+{ifis:$dekanat,402}
+<br />Evangelisches Bildungswerk Freising e.V.
+<br />Martin-Luther-Straße 10
+<br />85354 Freising
+{ifis:end}
+{ifis:$dekanat,403}
+<br />Evangelisches Bildungswerk Fürstenfeldbruck e. V.
+<br />Stockmeierweg 5
+<br />82256 Fürstenfeldbruck
+{ifis:end}
+{ifis:$dekanat,405}
+<br />Evangelisches Bildungswerk Rosenheim – Ebersberg e. V.
+<br />Münchener Straße 38
+<br />83022 Rosenheim
+{ifis:end}
+{ifis:$dekanat,406}
+<br />Evangelisches Bildungswerk im Evang.-Luth. Dekanat Traunstein e. V.
+<br />Crailsheimerstr. 12
+<br />83278 Traunstein
+{ifis:end}
+{ifis:$dekanat,501}
+<br />Evangelisches Forum Nürnberger Land e. V.
+<br />Nikolaus-Selnecker-Platz 2
+<br />91217 Hersbruck
+{ifis:end}
+{ifis:$dekanat,502}
+<br />Evangelisches Bildungswerk Erlangen e. V.
+<br />Hindenburgstraße 46 a
+<br />91054 Erlangen
+{ifis:end}
+{ifis:$dekanat,503}
+<br />Evangelisches Bildungswerk Fürth e. V. – Fürther Forum
+<br />Otto-Seeling-Promenade 7
+<br />90762 Fürth
+{ifis:end}
+{ifis:$dekanat,504}
+<br />Evangelisches Bildungswerk Fränkische Schweiz e. V.
+<br />Kirchplatz 3
+<br />91322 Gräfenberg
+{ifis:end}
+{ifis:$dekanat,505}
+<br />Evangelisches Forum Nürnberger Land e. V.
+<br />Nikolaus-Selnecker-Platz 2
+<br />91217 Hersbruck
+{ifis:end}
+{ifis:$dekanat,506}
+<br />Evangelisches Bildungswerk Bad Windsheim-Neustadt/Aisch- Uffenheim e. V.
+<br />Gartenweg 6
+<br />91448 Emskirchen
+{ifis:end}
+{ifis:$dekanat,507}
+<br />Evangelisches Bildungswerk e. V. Nürnberg - forum erwachsenenbildung
+<br />Burgstr. 1 – 3
+<br />90403 Nürnberg
+{ifis:end}
+{ifis:$dekanat,508}
+<br />Evangelisches Bildungswerk Jura-Altmühltal-Hahnenkamm e. V.
+<br />Martin-Luther-Platz 9
+<br />91781 Weißenburg
+{ifis:end}
+{ifis:$dekanat,509}
+<br />Evangelisches Bildungswerk Schwabach e. V.
+<br />Wittelsbacherstraße 4
+<br />91126 Schwabach
+{ifis:end}
+{ifis:$dekanat,510}
+<br />Evangelisches Bildungswerk Jura-Altmühltal-Hahnenkamm e. V.
+<br />Martin-Luther-Platz 9
+<br />91781 Weißenburg
+{ifis:end}
+{ifis:$dekanat,603}
+<br />Evangelisches Bildungswerk Landshut e. V.
+<br />Luitpoldstraße 3
+<br />84034 Landshut
+{ifis:end}
+{ifis:$dekanat,604}
+<br />Evangelisches Bildungswerk Neumarkt i. d. OPf. e. V.
+<br />Seelstraße 11
+<br />92318 Neumarkt
+{ifis:end}
+{ifis:$dekanat,605}
+<br />Evangelisches Bildungswerk im Dekanatsbezirk Passau e. V.
+<br />Dietrich-Bonhoeffer-Platz 1
+<br />94032 Passau
+{ifis:end}
+{ifis:$dekanat,606}
+<br />Evangelisches Bildungswerk Regensburg e. V.
+<br />Am Ölberg 2
+<br />93047 Regensburg
+{ifis:end}
+{ifis:$dekanat,607}
+<br />Evangelisches Bildungswerk Sulzbach-Rosenberg e. V.
+<br />Paulanergasse 12
+<br />92224 Amberg
+{ifis:end}
+{ifis:$dekanat,608}
+<br />Evangelisches Bildungswerk Weiden e. V.
+<br />Schlossbergstraße 8
+<br />92696 Flossenbürg
+{ifis:end}
+
+{template:end}

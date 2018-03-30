@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Datumsformatierungen</title>
+</head>
+
+<body>
+
+<div id="content">
+
+<h2>Datumsformatierung</h2>
+<p>Dieser Export enthält die möglichen Definitionen für eine individuelle Ausgabe des Datums und der Uhrzeit einer Veranstaltung</p>
+
+{loop:start}
+<h3>Termin: 	{elem:DATUM2} : {elem:_event_TITLE}</h3>
+<p><b>Verwendung der vorgegebenen Platzhalter</b></p>
+<p>Beispiel "{"elem:DATUM2"}" : {elem:DATUM}</p>
+<p> START : <b>{elem:START}</b>
+<br /> END : <b>{elem:END}</b>
+<br /> DATUM : <b>{elem:DATUM}</b>
+<br /> DATUM2: <b>{elem:DATUM2}</b>
+<br /> WOCHENTAG_START_LANG : <b>{elem:WOCHENTAG_START_LANG}</b>
+<br /> WOCHENTAG_START_KURZ : <b>{elem:WOCHENTAG_START_KURZ}</b>
+<br /> START_DATUM : <b>{elem:START_DATUM}</b>
+<br /> START_UHRZEIT : <b>{elem:START_UHRZEIT}</b>
+<br /> START_UHRZEIT2 : <b>{elem:START_UHRZEIT2}</b>
+<br /> START_MONAT : <b>{elem:START_MONAT}</b>
+<br /> START_JAHR : <b>{elem:START_JAHR}</b>
+<br /> WOCHENTAG_END_LANG : <b>{elem:WOCHENTAG_END_LANG}</b>
+<br /> WOCHENTAG_END_KURZ : <b>{elem:WOCHENTAG_END_KURZ}</b>
+<br /> END_DATUM : <b>{elem:END_DATUM}</b>
+<br /> END_UHRZEIT : <b>{elem:END_UHRZEIT}</b>
+<br /> END_MONAT : <b>{elem:END_MONAT}</b>
+<br /> END_JAHR : <b>{elem:END_JAHR}</b>
+<br /> monthbar : <b>{elem:monthbar}</b>
+</p>
+
+
+<p><b>Verwendung von timeformat : Vgl. PHP strftime()</b></p>
+<p>Beispiel "{"timeformat:START,%a, %e.%m"}" : <b>{timeformat:START,%a, %e.%m}</b></p>
+<p>%a - abgekürzter Name des Wochentages: <b>{timeformat:START,%a}</b>
+<br />%A - ausgeschriebener Name des Wochentages: <b>{timeformat:START,%A}</b>
+<br />%b - abgekürzter Name des Monats: <b>{timeformat:START,%b}</b>
+<br />%B - ausgeschriebener Name des Monats: <b>{timeformat:START,%B}</b>
+<br />%c - Wiedergabewerte für Datum und Zeit: <b>{timeformat:START,%c}</b>
+<br />%d - Tag des Monats als Zahl (Bereich 01 bis 31): <b>{timeformat:START,%d}</b>
+<br />%D - so wie %m/%d/%y : <b>{timeformat:START,%D}</b>
+<br />%e - Tag des Monats als Dezimal-Wert, einstelligen Werten wird ein Leerzeichen voran gestellt: <b>{timeformat:START,%e}</b>
+<br />%H - Stunde als Zahl im 24-Stunden-Format (Bereich 00 bis 23): <b>{timeformat:START,%H}</b>
+<br />%I - Stunde als Zahl im 12-Stunden-Format (Bereich 01 bis 12): <b>{timeformat:START,%I}</b>
+<br />%j - Tag des Jahres als Zahl (Bereich 001 bis 366): <b>{timeformat:START,%j}</b>
+<br />%m - Monat als Zahl (Bereich 01 bis 12): <b>{timeformat:START,%m}</b>
+<br />%M - Minute als Dezimal-Wert: <b>{timeformat:START,%M}</b>
+<br />%p - entweder `am' oder `pm': <b>{timeformat:START,%p}</b>
+<br />%r - Zeit im Format a.m. oder p.m.: <b>{timeformat:START,%r}</b>
+<br />%R - Zeit in der 24-Stunden-Formatierung: <b>{timeformat:START,%R}</b>
+<br />%T - aktuelle Zeit, genau wie %H:%M:%S: <b>{timeformat:START,%T}</b>
+<br />%u - Tag der Woche als Dezimal-Wert [1,7], dabei ist 1 der Montag: <b>{timeformat:START,%u}</b>
+<br />%U - Nummer der Woche des aktuellen Jahres als Dezimal-Wert, beginnend mit dem ersten Sonntag als erstem Tag der ersten Woche: <b>{timeformat:START,%U}</b>
+<br />%V - Kalenderwoche (nach ISO 8601:1988) des aktuellen Jahres. Als Dezimal-Zahl mit dem Wertebereich 01 bis 53: <b>{timeformat:START,%V}</b>
+<br />%w - Wochentag als Dezimal-Wert, Sonntag ist 0 : <b>{timeformat:START,%w}</b>
+<br />%W - Nummer der Woche des aktuellen Jahres, beginnend mit dem ersten Montag als erstem Tag der ersten Woche: <b>{timeformat:START,%W}</b>
+<br />%x - bevorzugte Datumswiedergabe: <b>{timeformat:START,%x}</b>
+<br />%X - bevorzugte Zeitwiedergabe: <b>{timeformat:START,%X}</b>
+<br />%y - Jahr als 2-stellige-Zahl: <b>{timeformat:START,%y}</b>
+<br />%Y - Jahr als 4-stellige-Zahl: <b>{timeformat:START,%Y}</b>
+<br />%Z - Zeitzone: <b>{timeformat:START,%Z}</b>
+</p>
+
+<p><b>Verwendung von dateformat : Vgl. PHP date()</b></p>
+<p>Beispiel: "{"dateformat:START,j.n."}": {dateformat:START,j.n.} </p>  
+<p>d - Tag des Monats, 2-stellig mit führender Null: <b>{dateformat:START,d}</b>
+<br />D - Wochentag, gekürzt auf drei Buchstaben: <b>{dateformat:START,D}</b>
+<br />j - Tag des Monats ohne führende Nullen: <b>{dateformat:START,j}</b>
+<br />l - Ausgeschriebener Wochentag: <b>{dateformat:START,l}</b>
+<br />N - Numerische Repräsentation des Wochentages gemäß ISO-8601: <b>{dateformat:START,N}</b>
+<br />w - Numerischer Tag einer Woche: <b>{dateformat:START,w}</b>
+<br />z - Der Tag des Jahres (von 0 beginnend): <b>{dateformat:START,z}</b>
+<br />W - ISO-8601 Wochennummer des Jahres, die Woche beginnt am Montag: <b>{dateformat:START,W}</b>
+<br />F - Monat als ganzes Wort: <b>{dateformat:START,F}</b>
+<br />m - Monat als Zahl, mit führenden Nullen: <b>{dateformat:START,m}</b>
+<br />M - Monatsname mit drei Buchstaben: <b>{dateformat:START,M}</b>
+<br />n - Monatszahl, ohne führende Nullen: <b>{dateformat:START,n}</b>
+<br />t - Anzahl der Tage des angegebenen Monats: <b>{dateformat:START,t}</b>
+<br />Y - Vierstellige Jahreszahl: <b>{dateformat:START,Y}</b>
+<br />y - Zweistellige Jahreszahl: <b>{dateformat:START,y}</b>
+<br />B - Swatch-Internet-Zeit: <b>{dateformat:START,B}</b>
+<br />g - Stunde im 12-Stunden-Format, ohne führende Nullen: <b>{dateformat:START,g}</b>
+<br />G - Stunde im 24-Stunden-Format, ohne führende Nullen: <b>{dateformat:START,G}</b>
+<br />h - Stunde im 12-Stunden-Format, mit führenden Nullen: <b>{dateformat:START,h}</b>
+<br />H - Stunde im 24-Stunden-Format, mit führenden Nullen: <b>{dateformat:START,H}</b>
+<br />i - Minuten, mit führenden Nullen: <b>{dateformat:START,i}</b>
+<br />c - ISO 8601 Datum : <b>{dateformat:START,c}</b>
+<br />r - Gemäß » RFC 2822 formatiertes Datum : <b>{dateformat:START,r}</b>
+</p>
+
+{loop:end}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{template:base}
+<html>
+	<head>
+		<title>Liste 3 GA</title>
+<style type="text/css">
+* {
+	font-family:Arial,Helvetica,sans-serif;
+}
+
+.grey {
+	background-color:whitesmoke;
+	margin:7px 0;
+	width:100%;
+	border:4px solid whitesmoke;
+	font-size:12pt;
+}
+#footer {
+	font-size:10pt;
+}
+.even {
+	margin:6px 0;
+	font-size:10pt;
+	background-color:whitesmoke;
+	border:4px solid whitesmoke;
+}
+.odd {
+	margin:6px 0;
+	font-size:10pt;
+	border:4px solid white;
+}
+.title {
+	font-size:12pt;
+	font-weight:bold;
+}
+.liturg {
+	font-size:13pt;
+	color:#666666;
+}
+.user {
+	font-size:9pt;
+	color:#666;
+}
+</style>
+	</head>
+	<body>
+		<div id="header">{me}</div>
+		<div id="footer">Stand: {now} Uhr; Exportzeitraum:
+        {start} bis {end}</div>
+		<div id="content">
+			<h2 style="font-size:16pt;">Termine vom {start} bis {end}</h2>
+			
+            {loop:start} 
+            	
+				{iseven}<p class="even">{call-template:veranstaltung}{call-template:end}</p>{iseven:end}
+                {isodd}<p class="odd">{call-template:veranstaltung}{call-template:end}</p>{isodd:end}
+            {loop:end}
+			  
+		</div>
+	</body>
+</html>
+{template:end}
+
+{template:veranstaltung}
+<span class="title">{elem:DATUM2}{space}:{space}{elem:_event_TITLE}</span>{if:SUBTITLE} : {elem:SUBTITLE}{if:end}
+                <br />{if:_event_SHORT_DESCRIPTION}{elem:_event_SHORT_DESCRIPTION}<br />{if:end}Ort: {elem:_place_CITY} : {elem:_place_NAME}
+                {if:_person_NAME}<br />mit: {elem:_person_NAME}{if:end}
+                <br /><span class="user">{elem:_user_REALNAME}</span>
+{template:end}

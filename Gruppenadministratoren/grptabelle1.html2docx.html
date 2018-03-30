@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>Tabelle 1 GA</title>
+<style type="text/css">
+* {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10pt;
+}
+h2 {
+	font-size:16pt;
+}
+.eight {
+	font-size:8pt;
+}
+.ten {
+	font-size:10pt;
+}
+.twelf {
+	font-size:12pt;
+}
+.sixteen {
+	font-size:16pt;
+}
+.center {
+	text-align:center;
+}
+.bordered td {
+	border:1px solid #666;
+	padding:3px;
+	vertical-align:top;
+	
+}
+table {
+	border-spacing:0px;
+	width:610;
+}
+#footer {
+	font-size:9pt;
+}
+.grey {
+	background-color:whitesmoke;
+}
+.user {
+	font-size:9pt;
+	color:#666;
+}
+</style>
+	</head>
+	<body>
+		<div id="header">{me}</div>
+		<div id="footer">Stand: {now} Uhr; Exportzeitraum:
+        {start} bis {end}</div>
+		<div id="content">
+			<h2 class="sixteen">Termine vom {start} bis {end}</h2>
+<table class="bordered">
+	<tr class="grey">
+		<td width="12%" >Tag</td>
+		<td width="10%" >Datum</td>
+		<td width="15%" >Uhrzeit</td>
+		<td width="63%" >Titel</td>
+		
+	</tr>
+    {loop:start}
+    <tr>
+        <td class="ten">{ifnotprev:START_DATUM}{elem:WOCHENTAG_START_LANG}{ifnotprev:end}</td>
+        <td class="ten">{ifnotprev:START_DATUM}{elem:START_DATUM}{ifnotprev:end}</td>
+        <td class="ten">{elem:START_UHRZEIT2} Uhr</td>
+        <td class="ten"><strong>{elem:_event_TITLE}</strong>{if:SUBTITLE} : {elem:SUBTITLE}{if:end}{if:_event_SHORT_DESCRIPTION}<br />{elem:_event_SHORT_DESCRIPTION}{if:end}{if:_person_NAME}<br />{elem:_person_NAME}{if:end}<br /><span class="eight">{elem:_place_CITY}: {elem:_place_NAME}</span>
+        <br /><span class="user">{elem:_user_REALNAME}</span>
+        </td>
+    </tr>
+    {loop:end}
+</table>
+    </div>
+  </body>
+</html>

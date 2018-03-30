@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Liste 1</title>
+	</head>
+	<body>
+		<div id="header">{me}</div>
+		<div id="footer"><span style="font-size:10px;">Stand: {now} Uhr; Exportzeitraum:
+        {start} bis {end}</span></div>
+		<div id="content">
+			<h2>Termine vom {start} bis {end}</h2>
+			
+            {loop:start} 
+            	{ifnotprev:START_DATUM}<p style="margin:7px 0"><strong>{elem:WOCHENTAG_START_LANG}, {elem:START_DATUM}</strong>{if:LITURG_BEZ}<span style="font-size:13px;color:#666666">{space}{elem:LITURG_BEZ}</span>{if:end}</p>{ifnotprev:end}
+				<p style="margin:4px 0">{ifisnot:START_UHRZEIT,00.00}{elem:START_UHRZEIT} Uhr : {ifisnot:end}{elem:_event_TITLE}{if:SUBTITLE} : {elem:SUBTITLE}{if:end}
+                <br /><span style="font-size:10pt">{if:_event_SHORT_DESCRIPTION}{elem:_event_SHORT_DESCRIPTION}<br />{if:end}{elem:_place_NAME}
+                {if:_person_NAME}<br />mit: {elem:_person_NAME}{if:end}</span>
+                </p>
+            {loop:end}
+			  
+		</div>
+	</body>
+</html>
