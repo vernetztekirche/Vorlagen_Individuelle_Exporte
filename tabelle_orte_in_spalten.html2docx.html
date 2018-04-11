@@ -62,20 +62,30 @@ table {
 		<td width="200" class="" >Gemeindehaus</td>
 		<td width="200" class="" >Kapelle</td>
 	</tr>
-    {loop:start}
-	<xsl:if test="_place_ID=101 or _place_ID=102 or _place_ID=103 or _place_ID=104">
+
+	<!-- Filterung der Veranstaltungen nach den gewünschten Orten -->
+	<xsl:variable name="filteredVeranstaltungen">
+		<xsl:for-each select="Veranstaltung">
+			<xsl:sort select="START"/>
+			<xsl:if test="_place_ID=101 or _place_ID=102 or _place_ID=103 or _place_ID=104">
+				<xsl:copy-of select="." />
+			</xsl:if>
+		</xsl:for-each>
+	</xsl:variable>
+
+
+	<xsl:for-each select="exsl:node-set($filteredVeranstaltungen)/Veranstaltung">
 	{ifnotprev:START_DATUM}
     <tr>
         <td class="ten">{timeformat:START,%a}{space}{timeformat:START,%d}.{space}{timeformat:START,%b}.{if:LITURG_BEZ}<br />{elem:LITURG_BEZ}{if:end}</td>
-        <td class="ten">{call-template:veras}<xsl:with-param name="place" select="101" /><xsl:with-param name="day" select="START_DATUM" />{call-template:end}</td>
-		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="102" /><xsl:with-param name="day" select="START_DATUM" />{call-template:end}</td>
-		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="103" /><xsl:with-param name="day" select="START_DATUM" />{call-template:end}</td>
-		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="104" /><xsl:with-param name="day" select="START_DATUM" />{call-template:end}</td>
+        <td class="ten">{call-template:veras}<xsl:with-param name="place" select="101" /><xsl:with-param name="day" select="START_DATUM" /><xsl:with-param name="veras" select="$filteredVeranstaltungen" />{call-template:end}</td>
+		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="102" /><xsl:with-param name="day" select="START_DATUM" /><xsl:with-param name="veras" select="$filteredVeranstaltungen" />{call-template:end}</td>
+		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="103" /><xsl:with-param name="day" select="START_DATUM" /><xsl:with-param name="veras" select="$filteredVeranstaltungen" />{call-template:end}</td>
+		<td class="ten">{call-template:veras}<xsl:with-param name="place" select="104" /><xsl:with-param name="day" select="START_DATUM" /><xsl:with-param name="veras" select="$filteredVeranstaltungen" />{call-template:end}</td>
 
     </tr>
 	{ifnotprev:end}
-		</xsl:if>
-    {loop:end}
+	</xsl:for-each>
 </table>
     </div>
    </body>
@@ -86,7 +96,8 @@ table {
 {template:veras}
 <xsl:param name="place" />
 <xsl:param name="day" />
-<xsl:for-each select="/root/Export/Veranstaltung[_place_ID=$place]">
+<xsl:param name="veras" />
+<xsl:for-each select="exsl:node-set($veras)/Veranstaltung[_place_ID=$place]">
 	<xsl:if test="START_DATUM=$day"><xsl:value-of select="START_UHRZEIT"/><br />
 		<strong><xsl:value-of select="_event_TITLE"/></strong><br />
 		{if:_person_NAME}{elem:_person_NAME}<br />{if:end}
