@@ -1,0 +1,89 @@
+<html>
+
+<head>
+  <style type="text/css">
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    #logo {
+      float: right;
+    }
+
+    #header {}
+
+    #absender {
+      font-size: 8;
+      margin-bottom: 100;
+    }
+
+    #empfaenger {
+      font-size: 12;
+
+    }
+
+    #rightblock {
+      font-size: 8;
+    }
+
+    h1 {
+      margin-top: 10em;
+      font-size: 14pt;
+    }
+
+    #footer {
+      font-size: 7.5;
+      color: gray;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"><img id="logo" src="https://www.evangelische-termine.de/bundles/vket/images/Logo150.gif" /></div>
+  <div id="content">
+
+    <p id="absender">Kirchengemeinde Musterhausen
+      <br />evangelisch im Herzen des www
+      </br>Musterstr. 99 • 00000 Musterhausen
+    </p>
+
+    <table style="width:100%;">
+      <tr style="width:100%">
+        <td style="width:60%" id="empfaenger">
+
+          {vorname} {name}<br />
+          {strasse}<br />
+          {plz} {ort}
+
+        </td>
+        <td id="rightblock" style="width:40%">
+          {DATUM}<br />
+          {_event_TITLE}<br />
+          {_place_NAME}
+        </td>
+      </tr>
+    </table>
+    <h1>Eintrittskarte</h1>
+    <p>Wir freuen uns, Sie bei unserer Veranstaltung {_event_TITLE} am {DATUM}
+      begrüßen zu dürfen. Bitte drucken Sie diese Eintrittskarte aus und bringen Sie sie zur Veranstaltung mit.</p>
+
+    {register_qrcode}
+    
+    
+    <p style="margin-top:3em;">Noch ein paar Hinweise: Speisen und Getränke können vor und nach der Veranstaltung erworben werden.
+        Während der Vorstellung bitten wir Sie, ihr Mobiltelefon auf lautlos zu stellen.</p>
+
+  </div>
+  <div id="footer">
+    <hr>
+    Kirchengemeinde Musterhausen • Musterstr. 99 • 00000 Musterhausen • Tel.: 000 / 12 34 56 78 • E-Mail:
+    muster@muster.de
+  </div>
+</body>
+</html>

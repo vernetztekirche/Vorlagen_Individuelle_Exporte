@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <style type="text/css">
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    #logo {
+      float: right;
+    }
+
+    #header {}
+
+    #absender {
+      font-size: 8;
+      margin-bottom: 100;
+    }
+
+    #empfaenger {
+      font-size: 12;
+
+    }
+
+    #rightblock {
+      font-size: 8;
+    }
+
+    h1 {
+      margin-top: 10em;
+      font-size: 14pt;
+    }
+
+    #footer {
+      font-size: 7.5;
+      color: gray;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"><img id="logo" src="https://www.evangelische-termine.de/bundles/vket/images/Logo150.gif" /></div>
+  <div id="content">
+
+    <p id="absender">Kirchengemeinde Musterhausen
+      <br />evangelisch im Herzen des www
+      </br>Musterstr. 99 • 00000 Musterhausen
+    </p>
+
+    <table style="width:100%;">
+      <tr style="width:100%">
+        <td style="width:60%" id="empfaenger">
+
+          {vorname} {name}<br />
+          {strasse}<br />
+          {plz} {ort}
+
+        </td>
+        <td id="rightblock" style="width:40%">
+          Rechnungs-Nr: {payment_number}<br />
+          Datum: {now}
+        </td>
+      </tr>
+    </table>
+    <h1>Rechnung Nr. {payment_number}</h1>
+    <p>Wir erlauben uns für Ihre Teilnahme an unserer Veranstaltung {_event_TITLE} am {DATUM}
+      folgenden Betrag in Rechnung zu stellen:</p>
+
+    <table style="width:100%">
+      <tr style="width:100%">
+        <td style="width:60%">Gesamtbetrag</td>
+        <td style="width:40%">{payment_price} €</td>
+      </tr>
+    </table>
+    <p>Der Gesamtbetrag enthält 19% MWSt.</p>
+    <p style="margin-top:3em;">Bitte überweisen Sie den Gesamtbetrag auf das Konto IBAN: DE34 0007 0007 0007 0007 89 bei
+      der Sparkasse Musterhausen. Bitte geben Sie im Verwendungszweck die Rechnungsnummer {payment_number} an.</p>
+
+  </div>
+  <div id="footer">
+    <hr>
+    Kirchengemeinde Musterhausen • Musterstr. 99 • 00000 Musterhausen • Tel.: 000 / 12 34 56 78 • E-Mail:
+    muster@muster.de
+  </div>
+</body>
+</html>
